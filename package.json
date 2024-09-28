@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "deploy": "gh-pages -d .",
+    "scss": "sass --watch resources/scss:resources/css --source-map --style expanded",
+    "build:scss": "rm -f resources/css/*.css.map && sass resources/scss:resources/css --no-source-map --style expanded"
+  },
+  "homepage": "https://github.com/vanadis0929/tovstudy",
+  "dependencies": {
+    "gh-pages": "^6.1.1",
+    "sass": "^1.79.4"
+  }
+  
+}
