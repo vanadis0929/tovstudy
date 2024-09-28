@@ -6,8 +6,13 @@
   },
   "homepage": "https://github.com/vanadis0929/tovstudy",
   "dependencies": {
+<<<<<<< HEAD
     "gh-pages": "^6.2.0",
     "sass": "^1.81.0"
+=======
+    "gh-pages": "^6.1.1",
+    "sass": "^1.79.4"
+>>>>>>> a68c935 (Updates)
   }
   
 }
