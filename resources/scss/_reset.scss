@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+@layer Reset {
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+    &:before,
+    &:after {
+      box-sizing: border-box;
+    }
+  }
+
+  img {
+    vertical-align: top;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul,
+  ol,
+  menu {
+    list-style: none;
+  }
+
+  input,
+  textarea {
+    font-family: inherit;
+  }
+
+  i,
+  dfn {
+    font-style: normal;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  *:focus {
+    outline-color: transparent;
+  }
+  *:focus-visible {
+    outline-color: initial;
+  }
+}

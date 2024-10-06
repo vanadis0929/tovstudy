@@ -1,0 +1,120 @@
+@import "./reset";
+@import "./base";
+
+@layer layout {
+  @mixin gnbDepth2Open {
+    display: grid;
+  }
+
+  @mixin gnbDepth1Hover {
+    font-weight: 700;
+    position: relative;
+
+    &:after {
+      transition: background-size 0.3s;
+      background-size: 100%;
+    }
+  }
+  @mixin gnbDepth2Hover {
+    font-weight: 700;
+    background-color: var(--primary-01);
+    color: #fff;
+    border-radius: 20px;
+  }
+
+  #ly_wrap {
+    display: grid;
+    grid-template-columns: auto min(1024px, 100%) auto;
+    grid-template-areas:
+      "leftgutter header rightgutter"
+      "leftgutter main rightgutter"
+      "leftgutter footer rightgutter";
+  }
+
+  .ly_header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    padding-block: 20px;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100vw;
+      inset: auto 0 0 0;
+      left: 50%;
+      border-bottom: 1px solid var(--grayscale-01);
+      transform: translateX(-50%);
+    }
+  }
+
+  .bl_gnb {
+    display: flex;
+    margin-left: auto;
+
+    &Inner {
+      display: flex;
+      gap: 40px;
+
+      &:hover,
+      &:focus-within {
+        .bl_gnbInnerDepth2 {
+          @include gnbDepth2Open;
+        }
+      }
+    }
+
+    &InnerDepth1 {
+      &Link {
+        font-size: 2rem;
+        position: relative;
+        &:after {
+          content: "";
+          position: absolute;
+          right: -8px;
+          top: 0;
+          width: 8px;
+          height: 8px;
+          background: url("../images/study2/bg-leaf.svg") center / 0;
+        }
+      }
+
+      &:hover,
+      &:focus-within {
+        .bl_gnbInnerDepth1Link {
+          @include gnbDepth1Hover;
+        }
+      }
+    }
+
+    &InnerDepth2 {
+      display: none;
+      position: absolute;
+
+      text-wrap: nowrap;
+      font-size: 1.6rem;
+      padding-block: 40px 28px;
+      z-index: 10;
+      grid-template-columns: 1fr;
+      row-gap: 10px;
+
+      &Link {
+        padding: 5px 10px;
+        &:focus-visible,
+        &:hover {
+          @include gnbDepth2Hover;
+        }
+      }
+    }
+  }
+
+  .ly_main {
+    grid-area: main;
+  }
+
+  .ly_footer {
+    grid-area: footer;
+  }
+}

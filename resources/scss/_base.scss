@@ -1,0 +1,36 @@
+@layer base {
+  :root {
+    --bg: #f9fafc;
+    --grayscale-01: #000;
+    --grayscale-02: #1a1a1a;
+    --grayscale-03: #333;
+    --grayscale-04: #4c4c4c;
+    --grayscale-05: #666;
+    --grayscale-06: #808080;
+    --grayscale-07: #999;
+    --grayscale-08: #b3b3b3;
+    --grayscale-09: #ccc;
+    --grayscale-10: #e5e5e5;
+    --grayscale-11: #d9d9d9;
+    --grayscale-12: rgba(0, 0, 0, 0.3);
+    --primary-01: #25c18d;
+    --primary-02: #047966;
+    --primary-03: #f2faf6;
+    --button-01: #ebedef;
+    --button-02: #ddd;
+    --etc-01: #ff3f53;
+    --etc-02: #40424c;
+    --dim-01: rgba(0, 0, 0, 0.6);
+    --badge-color-news: #2f80e0;
+  }
+
+  html {
+    font-size: 10px;
+    min-height: 100dvh;
+    // overflow-x: hidden;
+  }
+  body {
+    height: 100%;
+    font: 1.4rem/1.4 "Pretendard Variable", sans-serif;
+  }
+}
