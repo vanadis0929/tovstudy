@@ -1,13 +1,18 @@
+@charset "UTF-8";
 @layer Reset {
+  .utf-8 {
+    content: "Für charset"; /* dart-sass에서 컴파일시에 @charset "UTF-8"; 을 날려버려서 강제로 인식되게끔 하는 코드 */
+  }
   * {
-    padding: 0;
-    margin: 0;
+    padding: unset;
+    margin: unset;
     box-sizing: border-box;
   }
   *:before, *:after {
     box-sizing: border-box;
   }
   img {
+    max-inline-size: 100%;
     vertical-align: top;
   }
   a {
@@ -29,7 +34,7 @@
   }
   table {
     border-collapse: collapse;
-    width: 100%;
+    inline-size: 100%;
   }
   *:focus {
     outline-color: transparent;
@@ -76,24 +81,26 @@
   #ly_wrap {
     display: grid;
     grid-template-columns: auto min(1024px, 100%) auto;
-    grid-template-areas: "leftgutter header rightgutter" "leftgutter main rightgutter" "leftgutter footer rightgutter";
+    grid-template-areas: "leftgutter header rightgutter" "leftgutter2 main rightgutter2" "hline2 hline2 hline2" "leftgutter3 footer rightgutter3";
+    container: wrap/inline-size;
+  }
+  #ly_wrap .el_hline {
+    grid-area: hline;
+    height: 1px;
+    background-color: #000;
+    border: none;
+  }
+  #ly_wrap .el_hline--sr {
+    grid-area: hline2;
   }
   .ly_header {
     grid-area: header;
     display: flex;
     align-items: center;
     padding-block: 20px;
-    position: relative;
-  }
-  .ly_header:after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 100vw;
-    inset: auto 0 0 0;
-    left: 50%;
-    border-bottom: 1px solid var(--grayscale-01);
-    transform: translateX(-50%);
+    position: sticky;
+    inset-block-start: 0;
+    background-color: #fff;
   }
   .bl_gnb {
     display: flex;
@@ -103,29 +110,36 @@
     display: flex;
     gap: 40px;
   }
-  .bl_gnbInner:hover .bl_gnbInnerDepth2, .bl_gnbInner:focus-within .bl_gnbInnerDepth2 {
+  .bl_gnbInner:is(:hover, :focus-within) .bl_gnbInnerDepth2 {
     display: grid;
+  }
+  .bl_gnbInner:has(.bl_gnbInnerDepth1:is(:focus-within)) ~ .bl_gnbBanner {
+    display: block;
   }
   .bl_gnbInnerDepth1Link {
     font-size: 2rem;
     position: relative;
   }
   .bl_gnbInnerDepth1Link:after {
+    --gnbleafbefore: 2px -4px 0;
     content: "";
     position: absolute;
     right: -8px;
     top: 0;
-    width: 8px;
-    height: 8px;
-    background: url("../images/study2/bg-leaf.svg") center/0;
+    inline-size: 8px;
+    aspect-ratio: 1/1;
+    background: url("../images/study2/bg-leaf.svg") no-repeat center 0/8px 8px;
+    opacity: 0;
+    translate: var(--gnbleafbefore);
   }
-  .bl_gnbInnerDepth1:hover .bl_gnbInnerDepth1Link, .bl_gnbInnerDepth1:focus-within .bl_gnbInnerDepth1Link {
+  .bl_gnbInnerDepth1:is(:hover, :focus-within) .bl_gnbInnerDepth1Link {
     font-weight: 700;
     position: relative;
   }
-  .bl_gnbInnerDepth1:hover .bl_gnbInnerDepth1Link:after, .bl_gnbInnerDepth1:focus-within .bl_gnbInnerDepth1Link:after {
-    transition: background-size 0.3s;
-    background-size: 100%;
+  .bl_gnbInnerDepth1:is(:hover, :focus-within) .bl_gnbInnerDepth1Link:after {
+    transition: opacity 0.3s, translate 0.3s;
+    opacity: 1;
+    --gnbleafbefore: 0;
   }
   .bl_gnbInnerDepth2 {
     display: none;
@@ -140,11 +154,29 @@
   .bl_gnbInnerDepth2Link {
     padding: 5px 10px;
   }
-  .bl_gnbInnerDepth2Link:focus-visible, .bl_gnbInnerDepth2Link:hover {
+  .bl_gnbInnerDepth2Link:is(:hover, :focus-visible) {
     font-weight: 700;
     background-color: var(--primary-01);
     color: #fff;
     border-radius: 20px;
+  }
+  .bl_gnbBanner {
+    position: absolute;
+    inset: 0 0 0 50%;
+    width: 100cqi;
+    translate: -50%;
+    display: none;
+  }
+  .bl_gnbBanner::before {
+    content: "";
+    position: absolute;
+    inline-size: 100cqi;
+    inset: auto 0 0 50%;
+    border-bottom: 1px solid var(--grayscale-01);
+    translate: -50%;
+  }
+  .bl_gnbBanner img {
+    inline-size: 200px;
   }
   .ly_main {
     grid-area: main;
