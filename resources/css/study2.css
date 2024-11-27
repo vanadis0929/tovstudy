@@ -78,6 +78,9 @@
   }
 }
 @layer layout {
+  :root {
+    --maxHeight: 0;
+  }
   #ly_wrap {
     display: grid;
     grid-template-columns: auto min(1024px, 100%) auto;
@@ -111,10 +114,17 @@
     gap: 40px;
   }
   .bl_gnbInner:is(:hover, :focus-within) .bl_gnbInnerDepth2 {
+    visibility: visible;
+  }
+  .bl_gnbInner:is(:hover, :focus-within) ~ .bl_gnbBanner {
     display: grid;
   }
-  .bl_gnbInner:has(.bl_gnbInnerDepth1:is(:focus-within)) ~ .bl_gnbBanner {
-    display: block;
+  .ly_header:hover :is(.bl_gnbBanner, .bl_gnbInnerDepth2) {
+    display: grid;
+    visibility: visible;
+  }
+  .bl_gnb ~ .bl_gnbBanner {
+    display: grid;
   }
   .bl_gnbInnerDepth1Link {
     font-size: 2rem;
@@ -142,14 +152,16 @@
     --gnbleafbefore: 0;
   }
   .bl_gnbInnerDepth2 {
-    display: none;
+    display: grid;
     position: absolute;
+    visibility: hidden;
     text-wrap: nowrap;
     font-size: 1.6rem;
     padding-block: 40px 28px;
     z-index: 10;
     grid-template-columns: 1fr;
     row-gap: 10px;
+    min-height: max(var(--maxHeight));
   }
   .bl_gnbInnerDepth2Link {
     padding: 5px 10px;
@@ -162,24 +174,42 @@
   }
   .bl_gnbBanner {
     position: absolute;
-    inset: 0 0 0 50%;
+    inset: 83px 0 0 50%;
     width: 100cqi;
+    height: max(var(--maxHeight));
     translate: -50%;
     display: none;
+    grid-template-columns: auto min(1024px, 100%) auto;
+    grid-template-areas: "leftgutter banner rightgutter";
+    background-color: #fff;
   }
   .bl_gnbBanner::before {
     content: "";
-    position: absolute;
     inline-size: 100cqi;
-    inset: auto 0 0 50%;
-    border-bottom: 1px solid var(--grayscale-01);
-    translate: -50%;
+    display: block;
+    position: absolute;
+    inset: 0;
+    border-block-start: 1px solid var(--grayscale-01);
+    box-shadow: 0 6px 16px rgba(15, 21, 34, 0.04);
   }
-  .bl_gnbBanner img {
+  .bl_gnbBanner > a {
+    grid-area: banner;
+    width: 200px;
+    height: auto;
+    align-self: center;
+  }
+  .bl_gnbBanner > a img {
     inline-size: 200px;
   }
   .ly_main {
     grid-area: main;
+  }
+  .ly_main article[id] {
+    scroll-margin-top: 0;
+  }
+  .ly_main article[id].hidden {
+    height: 0;
+    overflow: hidden;
   }
   .ly_footer {
     grid-area: footer;
