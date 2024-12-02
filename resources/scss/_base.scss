@@ -13,6 +13,7 @@
     --grayscale-10: #e5e5e5;
     --grayscale-11: #d9d9d9;
     --grayscale-12: rgba(0, 0, 0, 0.3);
+    --grayscale-ff: #fff;
     --primary-01: #25c18d;
     --primary-02: #047966;
     --primary-03: #f2faf6;
@@ -27,10 +28,11 @@
   html {
     font-size: 10px;
     min-height: 100dvh;
-    // overflow-x: hidden;
+    overflow-x: auto;
+    min-inline-size: 1280px;
   }
   body {
-    height: 100%;
+    block-size: 100%;
     font: 1.4rem/1.4 "Pretendard Variable", sans-serif;
   }
 }

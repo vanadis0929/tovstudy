@@ -16,7 +16,7 @@
   @mixin gnbDepth2Hover {
     font-weight: 700;
     background-color: var(--primary-01);
-    color: #fff;
+    color: var(--grayscale-ff);
     border-radius: 20px;
   }
 
@@ -37,8 +37,8 @@
 
     .el_hline {
       grid-area: hline;
-      height: 1px;
-      background-color: #000;
+      block-size: 0.1rem;
+      background-color: var(--grayscale-01);
       border: none;
       &--sr {
         grid-area: hline2;
@@ -50,10 +50,11 @@
     grid-area: header;
     display: flex;
     align-items: center;
-    padding-block: 20px;
+    padding-block: 2rem;
     position: sticky;
     inset-block-start: 0;
-    background-color: #fff;
+    background-color: var(--grayscale-ff);
+    z-index: 20;
 
     &:after {
       //   content: "";
@@ -71,27 +72,34 @@
 
     &Inner {
       display: flex;
-      gap: 40px;
+      gap: 5rem;
 
       &:is(:hover, :focus-within) {
         .bl_gnbInnerDepth2 {
           @include gnbDepth2Open;
         }
         ~ .bl_gnbBanner {
-          display: grid;
+          visibility: visible;
+          opacity: 1;
+          z-index: -1;
         }
       }
     }
 
     @at-root .ly_header:hover :is(.bl_gnbBanner, .bl_gnbInnerDepth2) {
-      display: grid;
+      opacity: 1;
+
       visibility: visible;
     }
 
     ~ .bl_gnbBanner {
-      display: grid;
+      visibility: visible;
+      opacity: 1;
+      z-index: -1;
     }
+
     &InnerDepth1 {
+      position: relative;
       &Link {
         font-size: 2rem;
         position: relative;
@@ -99,9 +107,9 @@
           --gnbleafbefore: 2px -4px 0;
           content: "";
           position: absolute;
-          right: -8px;
+          right: -0.8rem;
           top: 0;
-          inline-size: 8px;
+          inline-size: 0.8rem;
           aspect-ratio: 1 / 1;
           background: url("../images/study2/bg-leaf.svg") no-repeat center 0 / 8px 8px;
           opacity: 0;
@@ -123,14 +131,15 @@
 
       text-wrap: nowrap;
       font-size: 1.6rem;
-      padding-block: 40px 28px;
+      padding-block: 4rem 2.8rem;
       z-index: 10;
       grid-template-columns: 1fr;
-      row-gap: 10px;
-      min-height: max(var(--maxHeight));
+      row-gap: 1rem;
+      min-block-size: max(var(--maxHeight));
+      align-content: baseline;
 
       &Link {
-        padding: 5px 10px;
+        padding: 0.5rem 1rem;
         &:is(:hover, :focus-visible) {
           @include gnbDepth2Hover;
         }
@@ -140,13 +149,22 @@
     &Banner {
       position: absolute;
       inset: 83px 0 0 50%;
-      width: 100cqi;
+      inline-size: 100cqi;
       height: max(var(--maxHeight));
       translate: -50%;
-      display: none;
+      visibility: hidden;
+      opacity: 0;
+      z-index: -1;
+      display: grid;
       grid-template-columns: auto min(1024px, 100%) auto;
       grid-template-areas: "leftgutter banner rightgutter";
-      background-color: #fff;
+      background-color: var(--grayscale-ff);
+
+      &:focus-within {
+        visibility: revert;
+        opacity: 1;
+        z-index: auto;
+      }
 
       &::before {
         content: "";
@@ -154,18 +172,20 @@
         display: block;
         position: absolute;
         inset: 0;
+
         border-block-start: 1px solid var(--grayscale-01);
         box-shadow: 0 6px 16px rgb(15 21 34 / 4%);
       }
 
       > a {
         grid-area: banner;
-        width: 200px;
-        height: auto;
+        inline-size: 200px;
+        block-size: auto;
         align-self: center;
+        position: relative;
 
         img {
-          inline-size: 200px;
+          inline-size: 20rem;
         }
       }
     }
@@ -175,16 +195,61 @@
     grid-area: main;
 
     article[id] {
-      scroll-margin-top: 0;
+      scroll-margin-top: 200px;
 
       &.hidden {
-        height: 0;
+        block-size: 0;
         overflow: hidden;
       }
     }
   }
 
-  .ly_footer {
-    grid-area: footer;
+  .bl_section {
+    &--center {
+      padding-block-start: 10rem;
+    }
+  }
+
+  .bl_lnb {
+    margin-block-end: 4rem;
+    ul {
+      display: flex;
+      gap: 3rem;
+    }
+  }
+}
+
+.ly_footer {
+  grid-area: footer;
+  padding: {
+    block: 2rem;
+  }
+
+  .title {
+    font-size: 1.6rem;
+    display: block;
+    margin-block-end: 1rem;
+  }
+
+  .util {
+    ul {
+      display: flex;
+      gap: 1rem;
+    }
+  }
+}
+
+.customerCenterService_group2 {
+  padding-block: 4rem;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    box-shadow: 0 0 0 100vmax var(--bg);
+    clip-path: inset(0 -100vmax);
+    background-color: var(--bg);
   }
 }

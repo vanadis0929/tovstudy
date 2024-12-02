@@ -27,12 +27,19 @@
   //   display: block;
   // }
 
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
   ul,
   ol,
   menu {
     list-style: none;
   }
 
+  button,
   input,
   textarea {
     font-family: inherit;
@@ -52,5 +59,10 @@
   }
   *:focus-visible {
     outline-color: initial;
+  }
+
+  :disabled,
+  [disabled] {
+    cursor: not-allowed;
   }
 }
