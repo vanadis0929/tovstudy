@@ -11,35 +11,6 @@
   }
 }
 
-#skipnavi {
-  position: fixed;
-  inset: 0 auto auto 0;
-  width: 100%;
-  margin-left: 0;
-  z-index: 99999;
-
-  a {
-    position: absolute;
-    left: -99999px;
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-size: 1.4em;
-    background-color: var(--grayscale-03);
-    color: #fff;
-    text-decoration: none;
-
-    &:is(:focus-visible, :active) {
-      position: relative;
-      left: 0;
-      z-index: 9999;
-      width: 100%;
-      padding: 10px;
-      font-weight: 700;
-    }
-  }
-}
-
 .el_title {
   --fontSize: 4.8rem;
   font-size: var(--fontSize);

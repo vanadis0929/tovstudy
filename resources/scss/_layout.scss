@@ -24,6 +24,35 @@
     --maxHeight: 0;
   }
 
+  #skipnavi {
+    position: fixed;
+    inset: 0 auto auto 0;
+    width: 100%;
+    margin-left: 0;
+    z-index: 99999;
+
+    a {
+      position: absolute;
+      left: -99999px;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 1.4em;
+      background-color: var(--grayscale-03);
+      color: #fff;
+      text-decoration: none;
+
+      &:is(:focus-visible, :active) {
+        position: relative;
+        left: 0;
+        z-index: 9999;
+        width: 100%;
+        padding: 10px;
+        font-weight: 700;
+      }
+    }
+  }
+
   #ly_wrap {
     display: grid;
     grid-template-columns: auto min(1024px, 100%) auto;
@@ -219,39 +248,39 @@
       gap: 3rem;
     }
   }
-}
 
-.ly_footer {
-  grid-area: footer;
-  padding: {
-    block: 2rem;
-  }
+  .ly_footer {
+    grid-area: footer;
+    padding: {
+      block: 2rem;
+    }
 
-  .title {
-    font-size: 1.6rem;
-    display: block;
-    margin-block-end: 1rem;
-  }
+    .title {
+      font-size: 1.6rem;
+      display: block;
+      margin-block-end: 1rem;
+    }
 
-  .util {
-    ul {
-      display: flex;
-      gap: 1rem;
+    .util {
+      ul {
+        display: flex;
+        gap: 1rem;
+      }
     }
   }
-}
 
-.customerCenterService_group2 {
-  padding-block: 4rem;
-  position: relative;
+  .customerCenterService_group2 {
+    padding-block: 4rem;
+    position: relative;
 
-  &:before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    box-shadow: 0 0 0 100vmax var(--bg);
-    clip-path: inset(0 -100vmax);
-    background-color: var(--bg);
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      box-shadow: 0 0 0 100vmax var(--bg);
+      clip-path: inset(0 -100vmax);
+      background-color: var(--bg);
+    }
   }
 }
