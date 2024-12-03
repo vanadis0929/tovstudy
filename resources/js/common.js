@@ -1,6 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   let array = [];
 
+  document.querySelector("#faq").setAttribute("hidden", "hidden");
+
   document.querySelectorAll(".bl_gnbInnerDepth2").forEach((current) => {
     array.push(current.clientHeight - 29 + "px");
   });
