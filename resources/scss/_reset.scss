@@ -1,0 +1,72 @@
+@layer Reset {
+  .utf-8 {
+    content: "Für charset"; /* dart-sass에서 컴파일시에 @charset "UTF-8"; 을 날려버려서 강제로 인식되게끔 하는 코드 */
+  }
+
+  * {
+    padding: unset;
+    margin: unset;
+    box-sizing: border-box;
+
+    &:before,
+    &:after {
+      box-sizing: border-box;
+    }
+  }
+
+  img {
+    max-inline-size: 100%;
+    vertical-align: top;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  // :is(li, dd, dt, td, p) > a {
+  //   display: block;
+  // }
+
+  button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  label[for] {
+    cursor: pointer;
+  }
+
+  ul,
+  ol,
+  menu {
+    list-style: none;
+  }
+
+  button,
+  input,
+  textarea {
+    font-family: inherit;
+  }
+
+  i,
+  dfn {
+    font-style: normal;
+  }
+
+  table {
+    border-collapse: collapse;
+    inline-size: 100%;
+  }
+  *:focus {
+    outline-color: transparent;
+  }
+  *:focus-visible {
+    outline-color: initial;
+  }
+
+  :disabled,
+  [disabled] {
+    cursor: not-allowed;
+  }
+}
