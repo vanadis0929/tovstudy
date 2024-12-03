@@ -24,6 +24,9 @@
     border: none;
     cursor: pointer;
   }
+  label[for] {
+    cursor: pointer;
+  }
   ul,
   ol,
   menu {
@@ -88,6 +91,7 @@
   body {
     block-size: 100%;
     font: 1.4rem/1.4 "Pretendard Variable", sans-serif;
+    scroll-behavior: smooth;
   }
 }
 @layer layout {
@@ -130,19 +134,17 @@
   .bl_gnbInner:is(:hover, :focus-within) .bl_gnbInnerDepth2 {
     visibility: visible;
   }
-  .bl_gnbInner:is(:hover, :focus-within) ~ .bl_gnbBanner {
-    visibility: visible;
-    opacity: 1;
-    z-index: -1;
-  }
-  .ly_header:hover :is(.bl_gnbBanner, .bl_gnbInnerDepth2) {
-    opacity: 1;
+  .ly_header:hover :is(.bl_gnbInnerDepth2) {
     visibility: visible;
   }
-  .bl_gnb ~ .bl_gnbBanner {
+  .ly_header:hover :is(.bl_gnbBanner) {
+    height: max(var(--maxHeight));
+  }
+  .ly_header:focus-within .bl_gnbBanner {
+    height: max(var(--maxHeight));
+  }
+  .ly_header:focus-within .bl_gnbInnerDepth2 {
     visibility: visible;
-    opacity: 1;
-    z-index: -1;
   }
   .bl_gnbInnerDepth1 {
     position: relative;
@@ -200,9 +202,8 @@
     inline-size: 100cqi;
     height: max(var(--maxHeight));
     translate: -50%;
-    visibility: hidden;
-    opacity: 0;
-    z-index: -1;
+    height: 0;
+    overflow: hidden;
     display: grid;
     grid-template-columns: auto min(1024px, 100%) auto;
     grid-template-areas: "leftgutter banner rightgutter";
@@ -279,6 +280,33 @@
   box-shadow: 0 0 0 100vmax var(--bg);
   clip-path: inset(0 -100vmax);
   background-color: var(--bg);
+}
+
+#skipnavi {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 100%;
+  margin-left: 0;
+  z-index: 99999;
+}
+#skipnavi a {
+  position: absolute;
+  left: -99999px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 1.4em;
+  background-color: var(--grayscale-03);
+  color: #fff;
+  text-decoration: none;
+}
+#skipnavi a:is(:focus-visible, :active) {
+  position: relative;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  padding: 10px;
+  font-weight: 700;
 }
 
 .el_title {
@@ -445,9 +473,12 @@
   align-items: center;
   column-gap: 1rem;
 }
-.bl_tab button {
+.bl_tab li {
+  position: relative;
+}
+.bl_tab label {
+  display: block;
   width: auto;
-  white-space: nowrap;
   font-size: 1.4rem;
   line-height: 3.8rem;
   text-align: center;
@@ -457,11 +488,29 @@
   color: var(--grayscale-04);
   background-color: #fff;
 }
-.bl_tab button.active {
+.bl_tab input {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+.bl_tab input:checked + label {
+  display: block;
   font-weight: 700;
   color: var(--grayscale-ff);
-  border-color: var(--grayscale-03);
+  border-color: transparent;
   background-color: var(--grayscale-03);
+  border-radius: 4rem;
+}
+.bl_tab:has(li:nth-child(2) input:checked) ~ .bl_faqList details:not(.group-1) {
+  display: none;
+}
+.bl_tab:has(li:nth-child(3) input:checked) ~ .bl_faqList details:not(.group-2) {
+  display: none;
+}
+.bl_tab:has(li:nth-child(4) input:checked) ~ .bl_faqList details:not(.group-3) {
+  display: none;
 }
 
 .bl_faqList {

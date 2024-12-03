@@ -78,24 +78,27 @@
         .bl_gnbInnerDepth2 {
           @include gnbDepth2Open;
         }
-        ~ .bl_gnbBanner {
-          visibility: visible;
-          opacity: 1;
-          z-index: -1;
-        }
       }
     }
 
-    @at-root .ly_header:hover :is(.bl_gnbBanner, .bl_gnbInnerDepth2) {
-      opacity: 1;
+    @at-root {
+      .ly_header:hover {
+        & :is(.bl_gnbInnerDepth2) {
+          visibility: visible;
+        }
+        & :is(.bl_gnbBanner) {
+          height: max(var(--maxHeight));
+        }
+      }
 
-      visibility: visible;
-    }
-
-    ~ .bl_gnbBanner {
-      visibility: visible;
-      opacity: 1;
-      z-index: -1;
+      .ly_header:focus-within {
+        .bl_gnbBanner {
+          height: max(var(--maxHeight));
+        }
+        .bl_gnbInnerDepth2 {
+          @include gnbDepth2Open;
+        }
+      }
     }
 
     &InnerDepth1 {
@@ -152,9 +155,8 @@
       inline-size: 100cqi;
       height: max(var(--maxHeight));
       translate: -50%;
-      visibility: hidden;
-      opacity: 0;
-      z-index: -1;
+      height: 0;
+      overflow: hidden;
       display: grid;
       grid-template-columns: auto min(1024px, 100%) auto;
       grid-template-areas: "leftgutter banner rightgutter";

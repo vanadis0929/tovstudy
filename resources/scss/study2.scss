@@ -11,6 +11,35 @@
   }
 }
 
+#skipnavi {
+  position: fixed;
+  inset: 0 auto auto 0;
+  width: 100%;
+  margin-left: 0;
+  z-index: 99999;
+
+  a {
+    position: absolute;
+    left: -99999px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 1.4em;
+    background-color: var(--grayscale-03);
+    color: #fff;
+    text-decoration: none;
+
+    &:is(:focus-visible, :active) {
+      position: relative;
+      left: 0;
+      z-index: 9999;
+      width: 100%;
+      padding: 10px;
+      font-weight: 700;
+    }
+  }
+}
+
 .el_title {
   --fontSize: 4.8rem;
   font-size: var(--fontSize);
@@ -57,8 +86,6 @@
 .el_bullet {
   --bulletFontSize: 1.4rem;
   position: relative;
-
-  // container-type: size;
   display: flex;
   align-items: center;
   column-gap: 0.8rem;
@@ -205,9 +232,14 @@
   align-items: center;
   column-gap: 1rem;
 
-  button {
+  li {
+    position: relative;
+  }
+
+  label {
+    display: block;
     width: auto;
-    white-space: nowrap;
+
     font-size: 1.4rem;
     line-height: 3.8rem;
     text-align: center;
@@ -216,12 +248,28 @@
     border: 1px solid var(--grayscale-10);
     color: var(--grayscale-04);
     background-color: #fff;
+  }
 
-    &.active {
+  input {
+    -webkit-appearance: none;
+    appearance: none;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+
+    &:checked + label {
+      display: block;
       font-weight: 700;
       color: var(--grayscale-ff);
-      border-color: var(--grayscale-03);
+      border-color: transparent;
       background-color: var(--grayscale-03);
+      border-radius: 4rem;
+    }
+  }
+
+  @for $i from 2 to 5 {
+    &:has(li:nth-child(#{$i}) input:checked) ~ .bl_faqList details:not(.group-#{$i - 1}) {
+      display: none;
     }
   }
 }

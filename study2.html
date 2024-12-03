@@ -11,6 +11,9 @@
 </head>
 
 <body>
+  <div id="skipnavi">
+    <a href="#main">본문 바로가기</a>
+  </div>
   <div id="ly_wrap">
     <header class="ly_header">
       <h1 class="bl_logo">
@@ -55,12 +58,12 @@
           </li>
         </ul>
         <aside class="bl_gnbBanner">
-          <a href="#none"><img src="https://placehold.co/600x400?text=banner" alt="banner" /></a>
+          <a href="#none"><img src="https://placehold.co/600x400?text=banner" alt="banner 영역" /></a>
         </aside>
       </nav>
     </header>
 
-    <main class="ly_main">
+    <main class="ly_main" id="main">
       <section class="bl_section bl_section--center">
         <h2 class="el_title">고객센터</h2>
 
@@ -75,7 +78,7 @@
           </ul>
         </nav>
 
-        <article id="customerCenter" tabindex="1">
+        <article id="customerCenter">
 
           <section class="bl_section bl_section--customerCenter">
 
@@ -216,21 +219,21 @@
             </div>
           </section>
         </article>
-        <article id="faq" class="hidden" tabindex="-1">
+        <article id="faq" class="hidden">
 
 
           <menu class="bl_tab">
-            <li><button type="button" class="active">전체</button></li>
-            <li><button type="button" id="group1">그린카드 안내</button></li>
-            <li><button type="button" id="group2">에코머니 적립/사용</button></li>
-            <li><button type="button" id="group3">홈페이지 문의</button></li>
+            <li><input type="radio" name="category" title="현재 카테고리" class="active" id="all" checked><label for="all">전체</label></li>
+            <li><input type="radio" name="category" id="group-1"><label for="group-1">그린카드 안내</label></li>
+            <li><input type="radio" name="category" id="group-2"><label for="group-2">에코머니 적립/사용</label></li>
+            <li><input type="radio" name="category" id="group-3"><label for="group-3">홈페이지 문의</label></li>
           </menu>
 
           <section class="bl_faqList">
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드(신용/체크/멤버십) 발급 후 별도 사용등록 절차가 있나요?그린카드(신용/체크/멤버십) 발급 후 별도 사용등록 절차가 있나요?그린카드(신용/체크/멤버십) 발급 후 별도 사용등록 절차가 있나요?그린카드(신용/체크/멤버십) 발급 후 별도 사용등록 절차가 있나요?그린카드(신용/체크/멤버십) 발급 후 별도 사용등록 절차가 있나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -241,7 +244,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드를 해지하고 싶습니다.</strong>
               </summary>
               <div class="accordian-detail">
@@ -253,7 +256,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">멤버십 카드 재발급은 어떻게 하나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -264,7 +267,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드 배송은 언제 되나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -306,7 +309,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드(신용/체크) 이용명세서, 결제일 등 확인 가능한가요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -317,7 +320,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드 발급 연령제한이 있나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -357,7 +360,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드 발급 은행 알려주세요.</strong>
               </summary>
               <div class="accordian-detail">
@@ -370,7 +373,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드인지 구분은 어떻게 하죠?</strong>
               </summary>
               <div class="accordian-detail">
@@ -381,7 +384,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드 서비스는 무엇이 있나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -429,7 +432,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드/에코마일리지 카드의 차이점은 무엇인가요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -486,7 +489,7 @@
 
             <details class="group-1">
               <summary>
-                <dfn class="category" aria-labelledby="group2">그린카드 안내</dfn>
+                <dfn class="category" aria-labelledby="group-1">그린카드 안내</dfn>
                 <strong class="title">그린카드란 무엇인가요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -496,7 +499,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">가족카드로 적립된 에코머니는 양도/합산할 수 있나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -509,7 +512,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">가족카드로 적립/사용된 에코머니는 어떻게 확인하나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -519,7 +522,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">자동차감서비스를 해지하고 싶습니다.</strong>
               </summary>
               <div class="accordian-detail">
@@ -531,7 +534,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">사용하지 않았는데 포인트가 차감됐습니다. 어떻게 된거죠? (자동차감서비스)</strong>
               </summary>
               <div class="accordian-detail">
@@ -546,7 +549,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 포인트 적립/사용 내역을 알고 싶어요.</strong>
               </summary>
               <div class="accordian-detail">
@@ -557,7 +560,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 포인트를 양도/합산할 수 있나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -568,7 +571,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">그린카드를 여러장 보유하고 있는데 포인트가 통합 관리되나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -578,7 +581,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 포인트의 유효기간이 있나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -589,7 +592,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 포인트 사용 시 비밀번호가 필요한가요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -605,7 +608,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 포인트는 어떻게 사용하나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -635,7 +638,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 포인트는 어떻게 적립하나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -647,7 +650,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">사용가능 포인트, 사용가능 예정포인트, 잔여 포인트가 뭔가요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -661,7 +664,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 / 탄소포인트 / 에코마일리지 차이점이 뭔가요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -725,7 +728,7 @@
 
             <details class="group-2">
               <summary>
-                <dfn class="category" aria-labelledby="group2">에코머니 적립/사용</dfn>
+                <dfn class="category" aria-labelledby="group-2">에코머니 적립/사용</dfn>
                 <strong class="title">에코머니 포인트란 무엇인가요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -735,7 +738,7 @@
 
             <details class="group-3">
               <summary>
-                <dfn class="category" aria-labelledby="group3">홈페이지 문의</dfn>
+                <dfn class="category" aria-labelledby="group-3">홈페이지 문의</dfn>
                 <strong class="title">서비스 이용을 위한 최적화 브라우저 환경은 어떻게 되나요?</strong>
               </summary>
               <div class="accordian-detail">
@@ -747,7 +750,7 @@
 
             <details class="group-3">
               <summary>
-                <dfn class="category" aria-labelledby="group3">홈페이지 문의</dfn>
+                <dfn class="category" aria-labelledby="group-3">홈페이지 문의</dfn>
                 <strong class="title">그린카드와 에코머니 포인트에 대해 더 자세한 내용이 궁금해요!</strong>
               </summary>
               <div class="accordian-detail">
