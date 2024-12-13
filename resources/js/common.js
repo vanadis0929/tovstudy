@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   let array = [];
 
-  document.querySelector("#faq").setAttribute("hidden", "hidden");
+  document.querySelector("#faq").setAttribute("inert", "inert");
 
   document.querySelectorAll(".bl_gnbInnerDepth2").forEach((current) => {
     array.push(current.clientHeight - 29 + "px");
@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
     event.currentTarget.setAttribute("disabled", "disabled");
 
     document.querySelectorAll(`.ly_main article[id]`).forEach((current) => {
-      current.setAttribute("hidden", "hidden");
+      current.setAttribute("inert", "inert");
     });
 
-    document.querySelector(`${event.currentTarget.dataset.href}`).classList.remove("hidden");
-    document.querySelector(`${event.currentTarget.dataset.href}`).removeAttribute("hidden");
+    //document.querySelector(`${event.currentTarget.dataset.href}`).classList.remove("hidden");
+    document.querySelector(`${event.currentTarget.dataset.href}`).removeAttribute("inert");
     document.querySelector(`${event.currentTarget.dataset.href}`).focus();
   };
 
