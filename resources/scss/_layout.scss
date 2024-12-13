@@ -3,6 +3,12 @@
     visibility: visible;
   }
 
+  @mixin visibilityHidden {
+    visibility: visible;
+    block-size: 0;
+    overflow: hidden;
+  }
+
   @mixin gnbDepth1Hover {
     font-weight: 700;
     position: relative;
@@ -228,7 +234,11 @@
     article[id] {
       scroll-margin-top: 200px;
 
-      &.hidden {
+      > h3 {
+        @include visibilityHidden;
+      }
+
+      &[inert] {
         block-size: 0;
         overflow: hidden;
       }

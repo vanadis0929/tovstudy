@@ -265,7 +265,12 @@
   .ly_main article[id] {
     scroll-margin-top: 200px;
   }
-  .ly_main article[id].hidden {
+  .ly_main article[id] > h3 {
+    visibility: visible;
+    block-size: 0;
+    overflow: hidden;
+  }
+  .ly_main article[id][inert] {
     block-size: 0;
     overflow: hidden;
   }
