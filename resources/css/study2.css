@@ -83,8 +83,8 @@
     --badge-color-news: #2f80e0;
   }
   html {
-    min-height: 100dvh;
     min-inline-size: 1280px;
+    min-block-size: 100dvh;
     font-size: 10px;
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -101,16 +101,17 @@
   }
   #skipnavi {
     position: fixed;
-    inset: 0 auto auto 0;
     z-index: 99999;
-    width: 100%;
+    inline-size: 100%;
     margin-left: 0;
+    inset-block: 0 auto;
+    inset-inline: 0 auto;
   }
   #skipnavi a {
     display: block;
     position: absolute;
     left: -99999px;
-    width: 100%;
+    inline-size: 100%;
     font-size: 1.4em;
     color: #fff;
     text-align: center;
@@ -121,7 +122,7 @@
     position: relative;
     left: 0;
     z-index: 9999;
-    width: 100%;
+    inline-size: 100%;
     padding: 10px;
     font-weight: 700;
   }
@@ -158,10 +159,10 @@
     visibility: visible;
   }
   .ly_header:hover :is(.bl_gnbBanner) {
-    height: max(var(--maxHeight));
+    block-size: max(var(--maxHeight));
   }
   .ly_header:focus-within .bl_gnbBanner {
-    height: max(var(--maxHeight));
+    block-size: max(var(--maxHeight));
   }
   .ly_header:focus-within .bl_gnbInnerDepth2 {
     visibility: visible;
@@ -184,13 +185,13 @@
     --gnbleafbefore: 2px -4px 0;
     content: "";
     position: absolute;
-    top: 0;
-    right: -0.8rem;
     aspect-ratio: 1/1;
     inline-size: 0.8rem;
     background: url("../images/study2/bg-leaf.svg") no-repeat center 0/8px 8px;
     opacity: 0;
     translate: var(--gnbleafbefore);
+    inset-block-start: 0;
+    inset-inline-end: -0.8rem;
   }
   .bl_gnbInnerDepth1:is(:hover, :focus-within) .bl_gnbInnerDepth1Link {
     position: relative;
@@ -228,13 +229,14 @@
     grid-template-areas: "leftgutter banner rightgutter";
     grid-template-columns: auto min(1024px, 100%) auto;
     position: absolute;
-    inset: 83px 0 0 50%;
-    height: max(var(--maxHeight));
-    height: 0;
     inline-size: 100cqi;
+    block-size: max(var(--maxHeight));
+    block-size: 0;
     translate: -50%;
     overflow: hidden;
     background-color: var(--grayscale-ff);
+    inset-block: 8.3rem 0;
+    inset-inline: 50% 0;
   }
   .bl_gnbBanner:focus-within {
     z-index: auto;
@@ -254,7 +256,7 @@
     grid-area: banner;
     align-self: center;
     position: relative;
-    inline-size: 200px;
+    inline-size: 20rem;
     block-size: auto;
   }
   .bl_gnbBanner > a img {
@@ -410,13 +412,13 @@
 }
 
 .customerCenterTel {
-  margin-block-end: 40px;
+  margin-block-end: 0.4rem;
 }
 .customerCenterTelFirst {
-  margin-bottom: 40px;
+  margin-block-end: 0.4rem;
 }
 .customerCenterTelRelationFirst {
-  margin-bottom: 40px;
+  margin-block-end: 0.4rem;
 }
 .bl_customerCenterTelRelationInfo {
   display: grid;
@@ -491,7 +493,7 @@
 }
 .bl_tab label {
   display: block;
-  width: auto;
+  inline-size: auto;
   padding-inline: 1.3rem;
   border: 1px solid var(--grayscale-10);
   border-radius: 4rem;
@@ -528,9 +530,10 @@
   column-gap: 2rem;
   align-items: center;
   position: relative;
-  padding: 20px 48px 20px 0;
-  border-bottom: 1px solid var(--grayscale-10);
   cursor: pointer;
+  border-block-end: 1px solid var(--grayscale-10);
+  padding-block: 2rem;
+  padding-inline: 0 4.8rem;
 }
 .bl_faqList summary dfn {
   flex: 0 0 12rem;
@@ -541,9 +544,9 @@
   flex: 1 1 auto;
   order: 1;
   font-size: 1.8rem;
-  text-indent: -20px;
+  text-indent: -0.2rem;
   margin-inline-end: auto;
-  padding-inline-start: 20px;
+  padding-inline-start: 0.2rem;
   word-break: keep-all;
   text-wrap: pretty;
 }
@@ -554,8 +557,8 @@
   content: "";
   flex-shrink: 0;
   order: 3;
-  width: 2rem;
-  height: 2rem;
+  inline-size: 2rem;
+  block-size: 2rem;
   border-radius: 2rem;
   background-color: red;
 }
