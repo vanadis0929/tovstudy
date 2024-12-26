@@ -34,7 +34,7 @@
     position: fixed;
     z-index: 99999;
     inline-size: 100%;
-    margin-left: 0;
+    margin-inline-start: 0;
     inset: {
       block: 0 auto;
       inline: 0 auto;
@@ -106,7 +106,7 @@
 
   .bl_gnb {
     display: flex;
-    margin-left: auto;
+    margin-inline-start: auto;
 
     @at-root {
       .ly_header:hover {
