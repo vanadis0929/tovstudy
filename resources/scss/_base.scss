@@ -26,10 +26,11 @@
   }
 
   html {
-    font-size: 10px;
     min-height: 100dvh;
-    overflow-x: auto;
     min-inline-size: 1280px;
+    font-size: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
   }
   body {
     block-size: 100%;
