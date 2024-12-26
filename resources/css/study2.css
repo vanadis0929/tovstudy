@@ -16,13 +16,13 @@
     vertical-align: top;
   }
   a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
   }
   button {
-    background-color: transparent;
     border: none;
     cursor: pointer;
+    background-color: transparent;
   }
   label[for] {
     cursor: pointer;
@@ -42,8 +42,8 @@
     font-style: normal;
   }
   table {
-    border-collapse: collapse;
     inline-size: 100%;
+    border-collapse: collapse;
   }
   *:focus {
     outline-color: transparent;
@@ -83,10 +83,11 @@
     --badge-color-news: #2f80e0;
   }
   html {
-    font-size: 10px;
     min-height: 100dvh;
-    overflow-x: auto;
     min-inline-size: 1280px;
+    font-size: 10px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
   }
   body {
     block-size: 100%;
@@ -101,19 +102,19 @@
   #skipnavi {
     position: fixed;
     inset: 0 auto auto 0;
+    z-index: 99999;
     width: 100%;
     margin-left: 0;
-    z-index: 99999;
   }
   #skipnavi a {
+    display: block;
     position: absolute;
     left: -99999px;
-    display: block;
     width: 100%;
-    text-align: center;
     font-size: 1.4em;
-    background-color: var(--grayscale-03);
     color: #fff;
+    text-align: center;
+    background-color: var(--grayscale-03);
     text-decoration: none;
   }
   #skipnavi a:is(:focus-visible, :active) {
@@ -126,39 +127,32 @@
   }
   #ly_wrap {
     display: grid;
-    grid-template-columns: auto min(1024px, 100%) auto;
     grid-template-areas: "leftgutter header rightgutter" "leftgutter2 main rightgutter2" "hline2 hline2 hline2" "leftgutter3 footer rightgutter3";
+    grid-template-columns: auto min(1024px, 100%) auto;
     container: wrap/inline-size;
   }
   #ly_wrap .el_hline {
     grid-area: hline;
     block-size: 0.1rem;
-    background-color: var(--grayscale-01);
     border: none;
+    background-color: var(--grayscale-01);
   }
   #ly_wrap .el_hline--sr {
     grid-area: hline2;
   }
   .ly_header {
-    grid-area: header;
     display: flex;
+    grid-area: header;
     align-items: center;
-    padding-block: 2rem;
     position: sticky;
+    z-index: 20;
+    padding-block: 2rem;
     inset-block-start: 0;
     background-color: var(--grayscale-ff);
-    z-index: 20;
   }
   .bl_gnb {
     display: flex;
     margin-left: auto;
-  }
-  .bl_gnbInner {
-    display: flex;
-    gap: 5rem;
-  }
-  .bl_gnbInner:is(:hover, :focus-within) .bl_gnbInnerDepth2 {
-    visibility: visible;
   }
   .ly_header:hover :is(.bl_gnbInnerDepth2) {
     visibility: visible;
@@ -172,102 +166,110 @@
   .ly_header:focus-within .bl_gnbInnerDepth2 {
     visibility: visible;
   }
+  .bl_gnbInner {
+    display: flex;
+    gap: 5rem;
+  }
+  .bl_gnbInner:is(:hover, :focus-within) .bl_gnbInnerDepth2 {
+    visibility: visible;
+  }
   .bl_gnbInnerDepth1 {
     position: relative;
   }
   .bl_gnbInnerDepth1Link {
-    font-size: 2rem;
     position: relative;
+    font-size: 2rem;
   }
   .bl_gnbInnerDepth1Link:after {
     --gnbleafbefore: 2px -4px 0;
     content: "";
     position: absolute;
-    right: -0.8rem;
     top: 0;
-    inline-size: 0.8rem;
+    right: -0.8rem;
     aspect-ratio: 1/1;
+    inline-size: 0.8rem;
     background: url("../images/study2/bg-leaf.svg") no-repeat center 0/8px 8px;
     opacity: 0;
     translate: var(--gnbleafbefore);
   }
   .bl_gnbInnerDepth1:is(:hover, :focus-within) .bl_gnbInnerDepth1Link {
-    font-weight: 700;
     position: relative;
+    font-weight: 700;
   }
   .bl_gnbInnerDepth1:is(:hover, :focus-within) .bl_gnbInnerDepth1Link:after {
-    transition: opacity 0.3s, translate 0.3s;
-    opacity: 1;
     --gnbleafbefore: 0;
+    opacity: 1;
+    transition: opacity 0.3s, translate 0.3s;
   }
   .bl_gnbInnerDepth2 {
     display: grid;
-    position: absolute;
-    visibility: hidden;
-    text-wrap: nowrap;
-    font-size: 1.6rem;
-    padding-block: 4rem 2.8rem;
-    z-index: 10;
     grid-template-columns: 1fr;
     row-gap: 1rem;
-    min-block-size: max(var(--maxHeight));
     align-content: baseline;
+    position: absolute;
+    z-index: 10;
+    min-block-size: max(var(--maxHeight));
+    padding-block: 4rem 2.8rem;
+    font-size: 1.6rem;
+    visibility: hidden;
+    text-wrap: nowrap;
   }
   .bl_gnbInnerDepth2Link {
     padding: 0.5rem 1rem;
   }
   .bl_gnbInnerDepth2Link:is(:hover, :focus-visible) {
-    font-weight: 700;
-    background-color: var(--primary-01);
-    color: var(--grayscale-ff);
     border-radius: 20px;
+    font-weight: 700;
+    color: var(--grayscale-ff);
+    background-color: var(--primary-01);
   }
   .bl_gnbBanner {
+    display: grid;
+    grid-template-areas: "leftgutter banner rightgutter";
+    grid-template-columns: auto min(1024px, 100%) auto;
     position: absolute;
     inset: 83px 0 0 50%;
-    inline-size: 100cqi;
     height: max(var(--maxHeight));
-    translate: -50%;
     height: 0;
+    inline-size: 100cqi;
+    translate: -50%;
     overflow: hidden;
-    display: grid;
-    grid-template-columns: auto min(1024px, 100%) auto;
-    grid-template-areas: "leftgutter banner rightgutter";
     background-color: var(--grayscale-ff);
   }
   .bl_gnbBanner:focus-within {
-    visibility: revert;
-    opacity: 1;
     z-index: auto;
+    opacity: 1;
+    visibility: revert;
   }
   .bl_gnbBanner::before {
     content: "";
-    inline-size: 100cqi;
     display: block;
     position: absolute;
     inset: 0;
-    border-block-start: 1px solid var(--grayscale-01);
+    inline-size: 100cqi;
     box-shadow: 0 6px 16px rgba(15, 21, 34, 0.04);
+    border-block-start: 1px solid var(--grayscale-01);
   }
   .bl_gnbBanner > a {
     grid-area: banner;
-    inline-size: 200px;
-    block-size: auto;
     align-self: center;
     position: relative;
+    inline-size: 200px;
+    block-size: auto;
   }
   .bl_gnbBanner > a img {
     inline-size: 20rem;
   }
   .ly_main {
     grid-area: main;
+    scroll-margin-block-start: 10rem;
   }
   .ly_main article[id] {
-    scroll-margin-top: 200px;
+    scroll-margin-block-start: 20rem;
   }
   .ly_main article[id] > h3 {
-    visibility: visible;
     block-size: 0;
+    visibility: visible;
     overflow: hidden;
   }
   .ly_main article[id][inert] {
@@ -289,8 +291,8 @@
     padding-block: 2rem;
   }
   .ly_footer .title {
-    font-size: 1.6rem;
     display: block;
+    font-size: 1.6rem;
     margin-block-end: 1rem;
   }
   .ly_footer .util ul {
@@ -298,8 +300,8 @@
     gap: 1rem;
   }
   .customerCenterService_group2 {
-    padding-block: 4rem;
     position: relative;
+    padding-block: 4rem;
   }
   .customerCenterService_group2:before {
     content: "";
@@ -329,44 +331,44 @@
 
 .el_btn {
   display: inline-flex;
-  text-align: center;
-  color: var(--grayscale-01);
   font-size: 2rem;
   line-height: 3rem;
+  color: var(--grayscale-01);
+  text-align: center;
 }
 .el_btn--sr {
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 0.2rem;
-  font-weight: 700;
 }
 .el_btn--sr:disabled {
   animation: underline 0.5s infinite;
 }
 .el_btn--sr:not(:disabled) {
+  font-weight: revert;
   color: var(--grayscale-07);
   text-decoration: none;
-  font-weight: revert;
 }
 
 .el_bullet {
   --bulletFontSize: 1.4rem;
-  position: relative;
   display: flex;
-  align-items: center;
   column-gap: 0.8rem;
+  align-items: center;
+  position: relative;
   font-size: var(--bulletFontSize);
 }
 .el_bullet:before {
   content: "";
-  align-self: baseline;
   display: block;
   flex-shrink: 0;
+  align-self: baseline;
+  aspect-ratio: 1/1;
+  inline-size: max(0.4rem, var(--bulletFontSize) * 0.2);
+  border-radius: 100%;
   font-size: var(--bulletFontSize);
   margin-block-start: calc(var(--bulletFontSize) * 0.55);
-  inline-size: max(0.4rem, var(--bulletFontSize) * 0.2);
-  aspect-ratio: 1/1;
   background-color: currentColor;
-  border-radius: 100%;
 }
 
 @keyframes underline {
@@ -380,12 +382,12 @@
   margin-block-end: 5rem;
 }
 .customerCenterService_groupLeft {
-  background-color: var(--bg);
+  flex: 0 0 380px;
   align-content: center;
+  border-radius: 14px;
+  background-color: var(--bg);
   padding-block: 3.2rem;
   padding-inline: 4.8rem;
-  flex: 0 0 380px;
-  border-radius: 14px;
 }
 .customerCenterService_groupLeft .el_title--sr2 {
   margin-block-end: 0;
@@ -395,11 +397,11 @@
   font-weight: 700;
 }
 .customerCenterService_groupRight {
-  flex: 1 1 auto;
   display: flex;
+  flex: 1 1 auto;
   column-gap: 6.2rem;
-  border-radius: 14px;
   border: 1px solid var(--button-02);
+  border-radius: 14px;
   place-content: center;
   place-items: center;
 }
@@ -417,22 +419,22 @@
   margin-bottom: 40px;
 }
 .bl_customerCenterTelRelationInfo {
-  margin-block-start: 2rem;
-  border: 1px solid var(--grayscale-10);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1px;
+  border: 1px solid var(--grayscale-10);
+  margin-block-start: 2rem;
   background-color: var(--grayscale-10);
 }
 .bl_customerCenterTelRelationInfo > div {
-  background-color: var(--grayscale-10);
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
-  align-items: stretch;
-  text-align: center;
-  font-size: 1.6rem;
   gap: 1px;
+  align-items: stretch;
+  justify-content: center;
+  font-size: 1.6rem;
+  text-align: center;
+  background-color: var(--grayscale-10);
 }
 .bl_customerCenterTelRelationInfo > div dt {
   padding-block: 2rem;
@@ -440,31 +442,31 @@
 }
 .bl_customerCenterTelRelationInfo > div dd {
   padding-block: 2rem;
-  background-color: var(--grayscale-ff);
   font-weight: 700;
+  background-color: var(--grayscale-ff);
 }
 
 .bl_telGrid {
   display: grid;
-  gap: 2rem;
   grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
 }
 .bl_telGrid > li {
   display: block;
   flex-direction: column;
-  border-radius: 1.4rem;
   padding: 1.2rem;
   border: 1px solid var(--grayscale-10);
-  background-color: #fff;
+  border-radius: 1.4rem;
   text-align: center;
+  background-color: #fff;
 }
 .bl_telGrid > li dfn {
   display: block;
 }
 .bl_telGrid > li a {
+  outline: none;
   font-size: 2.2rem;
   font-weight: 700;
-  outline: none;
 }
 .bl_telGrid > li:focus-within {
   outline: auto;
@@ -472,38 +474,8 @@
 
 .bl_tab {
   display: flex;
-  align-items: center;
   column-gap: 1rem;
-}
-.bl_tab li {
-  position: relative;
-}
-.bl_tab label {
-  display: block;
-  width: auto;
-  font-size: 1.4rem;
-  line-height: 3.8rem;
-  text-align: center;
-  padding-inline: 1.3rem;
-  border-radius: 4rem;
-  border: 1px solid var(--grayscale-10);
-  color: var(--grayscale-04);
-  background-color: #fff;
-}
-.bl_tab input {
-  -webkit-appearance: none;
-  appearance: none;
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-}
-.bl_tab input:checked + label {
-  display: block;
-  font-weight: 700;
-  color: var(--grayscale-ff);
-  border-color: transparent;
-  background-color: var(--grayscale-03);
-  border-radius: 4rem;
+  align-items: center;
 }
 .bl_tab:has(li:nth-child(2) input:checked) ~ .bl_faqList details:not(.group-1) {
   display: none;
@@ -514,34 +486,64 @@
 .bl_tab:has(li:nth-child(4) input:checked) ~ .bl_faqList details:not(.group-3) {
   display: none;
 }
+.bl_tab li {
+  position: relative;
+}
+.bl_tab label {
+  display: block;
+  width: auto;
+  padding-inline: 1.3rem;
+  border: 1px solid var(--grayscale-10);
+  border-radius: 4rem;
+  font-size: 1.4rem;
+  line-height: 3.8rem;
+  color: var(--grayscale-04);
+  text-align: center;
+  background-color: #fff;
+}
+.bl_tab input {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.bl_tab input:checked + label {
+  display: block;
+  border-radius: 4rem;
+  font-weight: 700;
+  color: var(--grayscale-ff);
+  border-color: transparent;
+  background-color: var(--grayscale-03);
+}
 
 .bl_faqList {
-  margin-block-start: 4.4rem;
   padding-block: 2.4rem 4rem;
   border-radius: 1.4rem;
+  margin-block-start: 4.4rem;
   background-color: var(--grayscale-ff);
 }
 .bl_faqList summary {
   display: flex;
-  align-items: center;
   column-gap: 2rem;
+  align-items: center;
+  position: relative;
   padding: 20px 48px 20px 0;
   border-bottom: 1px solid var(--grayscale-10);
   cursor: pointer;
-  position: relative;
 }
 .bl_faqList summary dfn {
+  flex: 0 0 12rem;
   order: 2;
   margin-inline-start: auto;
-  flex: 0 0 12rem;
 }
 .bl_faqList summary strong {
-  order: 1;
-  margin-inline-end: auto;
-  font-size: 1.8rem;
   flex: 1 1 auto;
-  padding-inline-start: 20px;
+  order: 1;
+  font-size: 1.8rem;
   text-indent: -20px;
+  margin-inline-end: auto;
+  padding-inline-start: 20px;
   word-break: keep-all;
   text-wrap: pretty;
 }
@@ -549,13 +551,13 @@
   content: "Q. ";
 }
 .bl_faqList summary:after {
-  order: 3;
   content: "";
+  flex-shrink: 0;
+  order: 3;
   width: 2rem;
   height: 2rem;
-  flex-shrink: 0;
-  background-color: red;
   border-radius: 2rem;
+  background-color: red;
 }
 .bl_faqList .accordian-detail {
   padding-inline: 2rem;

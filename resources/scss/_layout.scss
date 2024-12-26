@@ -4,26 +4,26 @@
   }
 
   @mixin visibilityHidden {
-    visibility: visible;
     block-size: 0;
+    visibility: visible;
     overflow: hidden;
   }
 
   @mixin gnbDepth1Hover {
-    font-weight: 700;
     position: relative;
+    font-weight: 700;
 
     &:after {
-      transition: opacity 0.3s, translate 0.3s;
-      opacity: 1;
       --gnbleafbefore: 0;
+      opacity: 1;
+      transition: opacity 0.3s, translate 0.3s;
     }
   }
   @mixin gnbDepth2Hover {
-    font-weight: 700;
-    background-color: var(--primary-01);
-    color: var(--grayscale-ff);
     border-radius: 20px;
+    font-weight: 700;
+    color: var(--grayscale-ff);
+    background-color: var(--primary-01);
   }
 
   :root {
@@ -33,19 +33,19 @@
   #skipnavi {
     position: fixed;
     inset: 0 auto auto 0;
+    z-index: 99999;
     width: 100%;
     margin-left: 0;
-    z-index: 99999;
 
     a {
+      display: block;
       position: absolute;
       left: -99999px;
-      display: block;
       width: 100%;
-      text-align: center;
       font-size: 1.4em;
-      background-color: var(--grayscale-03);
       color: #fff;
+      text-align: center;
+      background-color: var(--grayscale-03);
       text-decoration: none;
 
       &:is(:focus-visible, :active) {
@@ -61,20 +61,20 @@
 
   #ly_wrap {
     display: grid;
-    grid-template-columns: auto min(1024px, 100%) auto;
     grid-template-areas:
       "leftgutter header rightgutter"
       "leftgutter2 main rightgutter2"
       "hline2 hline2 hline2"
       "leftgutter3 footer rightgutter3";
+    grid-template-columns: auto min(1024px, 100%) auto;
 
     container: wrap / inline-size;
 
     .el_hline {
       grid-area: hline;
       block-size: 0.1rem;
-      background-color: var(--grayscale-01);
       border: none;
+      background-color: var(--grayscale-01);
       &--sr {
         grid-area: hline2;
       }
@@ -82,14 +82,14 @@
   }
 
   .ly_header {
-    grid-area: header;
     display: flex;
+    grid-area: header;
     align-items: center;
-    padding-block: 2rem;
     position: sticky;
+    z-index: 20;
+    padding-block: 2rem;
     inset-block-start: 0;
     background-color: var(--grayscale-ff);
-    z-index: 20;
 
     &:after {
       //   content: "";
@@ -104,17 +104,6 @@
   .bl_gnb {
     display: flex;
     margin-left: auto;
-
-    &Inner {
-      display: flex;
-      gap: 5rem;
-
-      &:is(:hover, :focus-within) {
-        .bl_gnbInnerDepth2 {
-          @include gnbDepth2Open;
-        }
-      }
-    }
 
     @at-root {
       .ly_header:hover {
@@ -136,19 +125,30 @@
       }
     }
 
+    &Inner {
+      display: flex;
+      gap: 5rem;
+
+      &:is(:hover, :focus-within) {
+        .bl_gnbInnerDepth2 {
+          @include gnbDepth2Open;
+        }
+      }
+    }
+
     &InnerDepth1 {
       position: relative;
       &Link {
-        font-size: 2rem;
         position: relative;
+        font-size: 2rem;
         &:after {
           --gnbleafbefore: 2px -4px 0;
           content: "";
           position: absolute;
-          right: -0.8rem;
           top: 0;
-          inline-size: 0.8rem;
+          right: -0.8rem;
           aspect-ratio: 1 / 1;
+          inline-size: 0.8rem;
           background: url("../images/study2/bg-leaf.svg") no-repeat center 0 / 8px 8px;
           opacity: 0;
           translate: var(--gnbleafbefore);
@@ -164,17 +164,17 @@
 
     &InnerDepth2 {
       display: grid;
+      grid-template-columns: 1fr;
+      row-gap: 1rem;
+      align-content: baseline;
       position: absolute;
+      z-index: 10;
+      min-block-size: max(var(--maxHeight));
+      padding-block: 4rem 2.8rem;
+      font-size: 1.6rem;
       visibility: hidden;
 
       text-wrap: nowrap;
-      font-size: 1.6rem;
-      padding-block: 4rem 2.8rem;
-      z-index: 10;
-      grid-template-columns: 1fr;
-      row-gap: 1rem;
-      min-block-size: max(var(--maxHeight));
-      align-content: baseline;
 
       &Link {
         padding: 0.5rem 1rem;
@@ -185,41 +185,41 @@
     }
 
     &Banner {
+      display: grid;
+      grid-template-areas: "leftgutter banner rightgutter";
+      grid-template-columns: auto min(1024px, 100%) auto;
       position: absolute;
       inset: 83px 0 0 50%;
-      inline-size: 100cqi;
       height: max(var(--maxHeight));
-      translate: -50%;
       height: 0;
+      inline-size: 100cqi;
+      translate: -50%;
       overflow: hidden;
-      display: grid;
-      grid-template-columns: auto min(1024px, 100%) auto;
-      grid-template-areas: "leftgutter banner rightgutter";
       background-color: var(--grayscale-ff);
 
       &:focus-within {
-        visibility: revert;
-        opacity: 1;
         z-index: auto;
+        opacity: 1;
+        visibility: revert;
       }
 
       &::before {
         content: "";
-        inline-size: 100cqi;
         display: block;
         position: absolute;
         inset: 0;
+        inline-size: 100cqi;
+        box-shadow: 0 6px 16px rgb(15 21 34 / 4%);
 
         border-block-start: 1px solid var(--grayscale-01);
-        box-shadow: 0 6px 16px rgb(15 21 34 / 4%);
       }
 
       > a {
         grid-area: banner;
-        inline-size: 200px;
-        block-size: auto;
         align-self: center;
         position: relative;
+        inline-size: 200px;
+        block-size: auto;
 
         img {
           inline-size: 20rem;
@@ -230,9 +230,10 @@
 
   .ly_main {
     grid-area: main;
+    scroll-margin-block-start: 10rem;
 
     article[id] {
-      scroll-margin-top: 200px;
+      scroll-margin-block-start: 20rem;
 
       > h3 {
         @include visibilityHidden;
@@ -266,8 +267,8 @@
     }
 
     .title {
-      font-size: 1.6rem;
       display: block;
+      font-size: 1.6rem;
       margin-block-end: 1rem;
     }
 
@@ -280,8 +281,8 @@
   }
 
   .customerCenterService_group2 {
-    padding-block: 4rem;
     position: relative;
+    padding-block: 4rem;
 
     &:before {
       content: "";
