@@ -1,13 +1,17 @@
 {
   "scripts": {
-    "deploy": "gh-pages -d .",
-    "scss": "sass --watch resources/scss:resources/css --source-map --style expanded",
-    "build:scss": "rm -f resources/css/*.css.map && sass resources/scss:resources/css --no-source-map --style expanded"
+      "scss": "sass --watch resources/scss:resources/css --source-map --style expanded && postcss resources/css/*.css -o resources/css",
+    "build:scss": "rm -f resources/css/*.css.map && sass resources/scss:resources/css --no-source-map --style expanded && resources/css/*.css -o resources/css/*.css",
+    "deploy": "gh-pages -d ."
   },
   "homepage": "https://github.com/vanadis0929/tovstudy",
   "dependencies": {
     "gh-pages": "^6.2.0",
     "sass": "^1.81.0"
+  },
+  "devDependencies": {
+    "postcss": "^8.4.49",
+    "postcss-cli": "^11.0.0",
+    "postcss-sorting": "^9.1.0"
   }
-  
 }

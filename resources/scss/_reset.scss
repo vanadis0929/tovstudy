@@ -19,8 +19,8 @@
     vertical-align: top;
   }
   a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
   }
 
   // :is(li, dd, dt, td, p) > a {
@@ -28,9 +28,9 @@
   // }
 
   button {
-    background-color: transparent;
     border: none;
     cursor: pointer;
+    background-color: transparent;
   }
 
   label[for] {
@@ -55,8 +55,8 @@
   }
 
   table {
-    border-collapse: collapse;
     inline-size: 100%;
+    border-collapse: collapse;
   }
   *:focus {
     outline-color: transparent;
