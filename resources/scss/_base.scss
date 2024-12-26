@@ -26,8 +26,8 @@
   }
 
   html {
-    min-height: 100dvh;
     min-inline-size: 1280px;
+    min-block-size: 100dvh;
     font-size: 10px;
     overflow-x: auto;
     scroll-behavior: smooth;
