@@ -216,7 +216,8 @@
     text-wrap: nowrap;
   }
   .bl_gnbInnerDepth2Link {
-    padding: 0.5rem 1rem;
+    padding-block: 0.5rem;
+    padding-inline: 1rem;
   }
   .bl_gnbInnerDepth2Link:is(:hover, :focus-visible) {
     border-radius: 20px;

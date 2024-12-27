@@ -180,7 +180,10 @@
       text-wrap: nowrap;
 
       &Link {
-        padding: 0.5rem 1rem;
+        padding: {
+          block: 0.5rem;
+          inline: 1rem;
+        }
         &:is(:hover, :focus-visible) {
           @include gnbDepth2Hover;
         }
