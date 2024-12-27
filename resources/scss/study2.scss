@@ -273,12 +273,13 @@
       flex: 1 1 auto;
       order: 1;
       font-size: 1.8rem;
-      text-indent: -0.2rem;
+      text-indent: -2.2rem;
       margin-inline-end: auto;
 
-      padding-inline-start: 0.2rem;
+      padding-inline-start: 2.2rem;
       word-break: keep-all;
       text-wrap: pretty;
+
       &:before {
         content: "Q. ";
       }
